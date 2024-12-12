@@ -1,12 +1,16 @@
 <?php
-function get_db_connection(){
-    // Create connection
-    $conn = new mysqli('138.197.17.168', 'misclair_finalHW3user', 'CY41727jms!', 'misclair_finalHW3');
-    
-    // Check connection
+function get_db_connection() {
+    $host = '138.197.17.168';
+    $username = 'misclair_finalHW3user';
+    $password = 'CY41727jms!';
+    $dbname = 'misclair_finalHW3';
+
+    $conn = new mysqli($host, $username, $password, $dbname);
+
     if ($conn->connect_error) {
-      return false;
+        throw new mysqli_sql_exception("Connection failed: " . $conn->connect_error);
     }
+
     return $conn;
 }
 ?>
